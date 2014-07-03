@@ -5,7 +5,7 @@
 
 import pytest
 import requests
-from BeautifulSoup import BeautifulStoneSoup
+from bs4 import BeautifulSoup
 from unittestzero import Assert
 from pages.desktop.notes import Notes
 
@@ -18,15 +18,13 @@ class TestNotes:
         notes_page.go_to_page()
         Assert.contains("Notes", notes_page.firefox_notes_header_text)
 
-    @pytest.mark.xfail("config.getvalue('base_url') == 'https://www.allizom.org'",
-                       reason="Bug 973622 - [stage] Press Center link from About section returns 404 error")
     @pytest.mark.skip_selenium
     @pytest.mark.nondestructive
     def test_that_all_links_are_valid(self, mozwebqa):
         notes_page = Notes(mozwebqa)
         url = mozwebqa.base_url + notes_page.notes_page_url
         page_response = requests.get(url)
-        html = BeautifulStoneSoup(page_response.content)
+        html = BeautifulSoup(page_response.content)
         bad_urls = []
         links = html.findAll('a')
         for link in links:

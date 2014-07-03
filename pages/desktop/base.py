@@ -73,13 +73,13 @@ class Base(Page):
                 'url_suffix': 'www.mozilla.org/contribute/',
             }, {
                 'locator': (By.CSS_SELECTOR, '#tabzilla-nav > ul > li:nth-child(4) > div > ul > li:nth-of-type(2) > a'),
-                'url_suffix': '/about/careers.html',
+                'url_suffix': '//careers.mozilla.org/?icn=tabz',
             }, {
                 'locator': (By.CSS_SELECTOR, '#tabzilla-nav > ul > li:nth-child(4) > div > ul > li:nth-of-type(3) > a'),
                 'url_suffix': '/about/mozilla-spaces/',
             }, {
                 'locator': (By.CSS_SELECTOR, '#tabzilla-nav > ul > li:nth-child(4) > div > ul > li:nth-of-type(4) > a'),
-                'url_suffix': '//sendto.mozilla.org/page/contribute/EOYFR2013-newdefault?icn=tabz&source=tabzilla_textlink',
+                'url_suffix': '//sendto.mozilla.org/page/contribute/Give-Now?icn=tabz&source=mozillaorg_default_tabzillaTXT',
             }, {
                 'locator': (By.CSS_SELECTOR, '#tabzilla-nav > ul > li:nth-child(4) > div > ul > li:nth-of-type(5) > a'),
                 'url_suffix': '/about/partnerships/',
@@ -119,10 +119,6 @@ class Base(Page):
 
         _footer_locator = (By.CSS_SELECTOR, '#colophon')
         _footer_logo_link_locator = (By.CSS_SELECTOR, 'h1.logo> a')
-        _footer_logo_img_locator = (By.CSS_SELECTOR, 'h1.logo> a >img')
-        expected_footer_logo_destination = '/en-US/'
-        expected_footer_logo_img = '/media/img/sandstone/footer-mozilla.png'
-
         footer_links_list = [
             {
                 'locator': (By.CSS_SELECTOR, '#colophon p.license a'),
@@ -136,7 +132,7 @@ class Base(Page):
                 'url_suffix': '/about/partnerships/',
             }, {
                 'locator': (By.CSS_SELECTOR, 'ul.links-join > li:nth-of-type(3) >a'),
-                'url_suffix': '//sendto.mozilla.org/page/contribute/EOYFR2013-newdefault?source=mozillaorg_footer',
+                'url_suffix': '//sendto.mozilla.org/page/contribute/Give-Now?source=mozillaorg_default_footer',
             }, {
                 'locator': (By.CSS_SELECTOR, 'ul.links-join > li:nth-of-type(4) >a'),
                 'url_suffix': 'affiliates.mozilla.org/',
@@ -175,13 +171,7 @@ class Base(Page):
             footer_logo_link = self.selenium.find_element(*self._footer_logo_link_locator)
             return footer_logo_link.get_attribute('href')
 
-        @property
-        def footer_logo_img(self):
-            footer_logo_img = self.selenium.find_element(*self._footer_logo_img_locator)
-            return footer_logo_img.get_attribute('src')
-
     class DownloadRegion(Page):
-
         _osx_download_locator = (By.CSS_SELECTOR, '.os_osx > a')
         _windows_download_locator = (By.CSS_SELECTOR, '.os_windows > a')
         _linux_download_locator = (By.CSS_SELECTOR, '.os_linux > a')

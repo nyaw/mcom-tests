@@ -17,7 +17,7 @@ class TestRedirectLanding(object):
         "es-MX", "et", "eu", "fa", "ff", "fi", "fr", "fy-NL", "ga-IE",
         "gd", "gl", "gu-IN", "he", "hi-IN", "hr", "hu", "hy-AM", "id",
         "is", "it", "ja", "kk", "km", "kn", "ko", "ku", "lg", "lij", " lt",
-        "lv", "mai", "mk", "ml", "mn", "mr", "nb-NO", "nl", "nn-NO", "nso",
+        "lv", "mai", "mk", "ml", "mr", "nb-NO", "nl", "nn-NO", "nso",
         "or", "pa-IN", "pl", "pt-BR", "pt-PT", "rm", "ro", "ru", "si", "sk",
         "sl", "son", "sq", "sr", "sv-SE", "sw", "ta", "ta-LK", "te", "th", "tr",
         "uk", "vi", "zh-CN", "zh-TW", "zu"
@@ -33,7 +33,6 @@ class TestRedirectLanding(object):
     def _test_redirect(self, mozwebqa, origin, final, headers):
         url = mozwebqa.base_url + origin
         response = requests.get(url, headers=headers)
-        ##result = mozwebqa.base_url + final
         Assert.contains(final, response.url)
 
     @pytest.mark.nondestructive

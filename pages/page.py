@@ -53,6 +53,7 @@ class Page(object):
 
     def open(self, url_fragment):
         self.selenium.get(self.base_url + url_fragment)
+        self.selenium.maximize_window()
 
     def select_option(self, value, locator):
         dropdown = self.selenium.find_element(*locator)
@@ -112,7 +113,7 @@ class Page(object):
 
     def get_response_code(self, url):
         # return the response status
-        #this sets max_retries to 5
+        # this sets max_retries to 5
         requests.adapters.DEFAULT_RETRIES = 10
         try:
             r = requests.get(url, verify=False, allow_redirects=True, timeout=self.timeout)
